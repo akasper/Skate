@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.3'
 gem "dm-rails"
 # gem 'dm-migrations'
-# gem "haml"
+gem "haml"
 # 
 group :test, :development do
   gem 'mysql'

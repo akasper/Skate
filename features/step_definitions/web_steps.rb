@@ -115,7 +115,6 @@ Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
 end
 
 Then /^(?:|I )should see \/([^\/]*)\/(?: within "([^"]*)")?$/ do |regexp, selector|
-  raise page.inspect.to_s
   regexp = Regexp.new(regexp)
   with_scope(selector) do
     if page.respond_to? :should
