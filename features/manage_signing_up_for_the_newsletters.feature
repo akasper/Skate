@@ -5,7 +5,7 @@ Feature: Manage signing_up_for_the_newsletters
   
   Scenario: Seeing the field to enter my email
 		When I visit the homepage
-		Then I should see ".email form"
+		Then I should see the "email" form
 		
 	Scenario: Entering an email address
 		When I visit the homepage
