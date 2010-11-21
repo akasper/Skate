@@ -9,7 +9,7 @@ Feature: Manage signing_up_for_the_newsletters
 		
 	Scenario: Entering an email address
 		When I visit the homepage
-		And I enter my email address into "email"
+		And I fill in "user_email" with "foo@bar.com"
 		And I press "Sign Up"
 		Then I should see "You have been signed up for the Skate newsletter"
 		And I should receive and email that says "You are now signed up for the Skate newsletter"

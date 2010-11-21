@@ -9,5 +9,11 @@ Then /^I should see the "([^"]*)" form$/ do |form_name|
 end
 
 Then /^I should see a "([^"]*)" button within "([^"]*)"$/ do |name, selector|
-  Then "I should see \"input[type='submit',value='#{name}']\" within \"#{selector}\""
+  whole_selector = selector + " input[type='submit'][value='#{name}']"
+  page.should have_selector(whole_selector)
+end
+
+When /^I enter my email address into the signup form$/ do
+  
+  pending # express the regexp above with the code you wish you had
 end
