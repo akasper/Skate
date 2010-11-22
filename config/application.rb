@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'active_resource/railtie'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -9,9 +11,10 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module Skate
   class Application < Rails::Application
     config.generators do |g|
+      g.orm :datamapper, :migration => true
       g.template_engine :haml
-      g.orm :datamapper
       g.test_framework :rspec, :fixture => true, :views => false
+      g.integration_tool :rspec
       #g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
     # Settings in config/environments/* take precedence over those specified here.
