@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
   def new
     @user ||= User.new
-    render :template => 'users/new'
   end
   
   def create
     user_params = params[:user] || {}
-    @user = User.create(:email => user_params[:email])
+    @user = User.new(:email => user_params[:email])
 
-    if @user.errors.blank?
-      redirect_to user_path @user
+    if @user.save
+      redirect_to @user
     else
-      flash[:error] = @user.errors.values.join(" ")
-      redirect_to new_user_path
+      flash[:error] = @user.errors.values.join("\n")
+      redirect_to :action => :new
     end
   end
   
