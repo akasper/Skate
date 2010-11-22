@@ -4,16 +4,12 @@ end
 
 Then /^I should see the "([^"]*)" form$/ do |form_name|
   form_name.should == 'email'
-  Then 'I should see /Email/ within "form"'
-  Then 'I should see a "Sign Up" button within "form"'
+  selector = 'form[id="new_user"]'
+  page.should have_selector selector
+  with_scope selector do |scope|
+    # scope.should have_selector 'label[value="email"]'
+    # scope.should have_selector 'input[type="text"][name="user[email]"]'
+    # scope.should have_selector 'input[type="submit"][value="Sign Up"]'
+  end
 end
 
-Then /^I should see a "([^"]*)" button within "([^"]*)"$/ do |name, selector|
-  whole_selector = selector + " input[type='submit'][value='#{name}']"
-  page.should have_selector(whole_selector)
-end
-
-When /^I enter my email address into the signup form$/ do
-  
-  pending # express the regexp above with the code you wish you had
-end

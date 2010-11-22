@@ -4,11 +4,11 @@ development:
   username: skate
   password: password
   host: 127.0.0.1
-  encoding: utf8
   
 test:
   adapter: mysql
   database: skate_test
   username: skate
   password: password
+  host: 127.0.0.1
 

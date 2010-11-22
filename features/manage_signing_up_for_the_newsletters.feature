@@ -1,5 +1,5 @@
 Feature: Manage signing_up_for_the_newsletters
-  In order to be informed of new news for Bothitong Skate Company 
+  In order to be informed of news regarding Bothitong Skate Company 
   A visitor to our site
   wants to give us his email address and receive the newsletter whenever it is new.
   
@@ -11,5 +11,6 @@ Feature: Manage signing_up_for_the_newsletters
 		When I visit the homepage
 		And I fill in "user_email" with "foo@bar.com"
 		And I press "Sign Up"
+		Then I should be on the "show user" page
 		Then I should see "You have been signed up for the Skate newsletter"
-		And I should receive and email that says "You are now signed up for the Skate newsletter"
+		And "foo@bar.com" receive an email that says "You are now signed up for the Skate newsletter"

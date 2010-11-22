@@ -1,0 +1,2 @@
+* The 'cucumber' rake task completely drops the DB, and should instead truncate all tables.
+* The 'cucumber' script does not clean correctly. 

@@ -33,6 +33,12 @@ describe UsersController do
     end
   end
   
+  context :show do
+    it 'is an action' do
+      controller.should be_respond_to(:show)
+    end
+  end
+  
   context :create do
     it 'is an action' do
       controller.should be_respond_to(:create)

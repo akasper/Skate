@@ -78,6 +78,8 @@ GEM
       dm-active_model (~> 1.0.3)
       dm-core (~> 1.0.0)
       railties (~> 3.0.0)
+    dm-validations (1.0.2)
+      dm-core (~> 1.0.2)
     do_mysql (0.10.2)
       data_objects (= 0.10.2)
     erubis (2.6.6)
@@ -166,6 +168,7 @@ DEPENDENCIES
   dm-migrations
   dm-mysql-adapter
   dm-rails
+  dm-validations
   haml
   mysql
   rails (= 3.0.3)
