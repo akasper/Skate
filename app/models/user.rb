@@ -1,3 +1,4 @@
+#A user of the application. So far, we track only email, and there is no authentication
 class User
 
   include DataMapper::Resource

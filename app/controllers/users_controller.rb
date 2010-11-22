@@ -1,3 +1,4 @@
+#Manages users. For now, users have only an email address.
 class UsersController < ApplicationController
   def new
     @user ||= User.new
