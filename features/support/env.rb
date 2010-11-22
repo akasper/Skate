@@ -53,4 +53,5 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 # http://github.com/bmabey/database_cleaner for more info.
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
+DataMapper.auto_migrate!
 DatabaseCleaner.strategy = :truncation
