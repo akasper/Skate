@@ -47,13 +47,27 @@ describe UsersController do
     context 'receives valid user data' do
       before :each do
         @user_data = {'email' => 'foo@example.com'}
-        post :create, 'user' => @user_data
       end
       
       it 'creates a user object' do
+        post :create, 'user' => @user_data
         User.all.count.should == 1
       end
+      
+      it 'sends the user an email' do
+        mail = mock("Mock")
+        mail.stub(:deliver)
+        NewsletterSignupMailer.stub(:welcome_email).and_return(mail)
+        NewsletterSignupMailer.should_receive(:welcome_email)#.with(User.first)
+        post :create, 'user' => @user_data
+        #TODO: How do you specify that POSTing to that action causes :welcome_email
+        #to be called with our user? We need to set the expectation of that call 
+        #before the post, but the user we need to specify as a param doesn't exist
+        #until afterwards.
+      end
+      
       it 'redirects to the "show user" page' do
+        post :create, 'user' => @user_data
         response.should redirect_to (user_path User.first)
       end
     end

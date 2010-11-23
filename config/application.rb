@@ -14,7 +14,7 @@ module Skate
       g.orm :datamapper, :migration => true
       g.template_engine :haml
       g.test_framework :rspec, :fixture => true, :views => false
-      g.integration_tool :rspec
+      g.integration_tool :cucumber
       #g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
     # Settings in config/environments/* take precedence over those specified here.

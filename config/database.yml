@@ -1,14 +1,14 @@
 development:
-  adapter: mysql
+  adapter: postgres
   database: skate_development
-  username: skate
+  username: akasper
   password: password
-  host: 127.0.0.1
+  host: localhost
   
 test:
-  adapter: mysql
+  adapter: postgres
   database: skate_test
-  username: skate
+  username: akasper
   password: password
-  host: 127.0.0.1
+  host: localhost
 
