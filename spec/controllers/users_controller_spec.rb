@@ -1,4 +1,4 @@
-require 'spec_helper'
+require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 def invalid_email_expectations params={}
   before :each do
@@ -16,7 +16,7 @@ end
 describe UsersController do
   SAMPLE_USER_DATA = {:email => 'foo@example.com'} unless defined? SAMPLE_USER_DATA
 
-  context :new do
+  describe :new do
     it 'is an action' do
       controller.should be_respond_to(:new)
     end
@@ -33,22 +33,27 @@ describe UsersController do
     end
   end
   
-  context :show do
+  describe :show do
     it 'is an action' do
       controller.should be_respond_to(:show)
     end
   end
   
-  context :create do
+  describe :create do
+    before :each do
+      @user_data = {'email' => 'foo@example.com'}
+    end
+    
     it 'is an action' do
       controller.should be_respond_to(:create)
     end
     
-    context 'receives valid user data' do
-      before :each do
-        @user_data = {'email' => 'foo@example.com'}
-      end
-      
+    it 'respects opt_out' do
+      post :create, 'user' => @user_data.merge(:opt_out => '1')
+      User.first.opt_out.should == true
+    end
+    
+    context 'when receiving valid user data' do
       it 'creates a user object' do
         post :create, 'user' => @user_data
         User.all.count.should == 1
@@ -72,7 +77,7 @@ describe UsersController do
       end
     end
     
-    context 'receives invalid user data' do
+    context 'when receiving invalid user data' do
       
       describe 'such as no "user" field in the params hash' do
         it 'redirects to the new user page' do
@@ -85,8 +90,8 @@ describe UsersController do
         invalid_email_expectations :email => 'bademailaddress'
       end
       describe 'such as no email address' do
-        invalid_email_expectations :email => ''
-        invalid_email_expectations :email => nil
+        context '(empty)' do; invalid_email_expectations :email => '' ; end
+        context '(nil)'   do; invalid_email_expectations :email => nil; end;
       end
       describe 'such as the submitted email address already existing' do
         before :each do

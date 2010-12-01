@@ -1,4 +1,9 @@
 =form_for user do |e|
-	%label email
+	=e.label :email, 'email address'
 	=e.text_field :email
 	=e.submit "Sign Up"
+	=e.label :opt_out, 'don\'t send me begging emails'
+	=e.check_box :opt_out
+	-if flash[:error].present?
+		#errors=flash[:error]
+	

@@ -14,6 +14,8 @@ module NavigationHelpers
       new_signing_up_for_the_newsletter_path
     when /(the )?show user( page)?/
       user_path @user || User.last
+    when /(the )?new user( page)?/
+      new_user_path
 
 
     # Add more mappings here.

@@ -21,3 +21,15 @@ Then /^"([^"]*)" should receive an email from "([^"]*)" that says "([^"]*)"$/ do
   @email.encoded.should =~ Regexp.new(content)
   # @email.html_part.should =~ Regexp.new(content)
 end
+
+Then /^"([^"]*)" should receive an email from "([^"]*)" that does not say "([^"]*)"$/ do |recipient, sender, content|
+  @email = ActionMailer::Base.deliveries.last
+  @email.to.should be_include recipient
+  @email.from.should be_include sender
+  @email.encoded.should_not =~ Regexp.new(content)
+end
+
+Then /^I should be opted out$/ do
+  @user ||= User.first
+  @user.opt_out.should == true
+end

@@ -5,5 +5,6 @@ class User
 
   property :id, Serial
   property :email, String, :required => true, :format => :email_address, :unique => true
+  property :opt_out, Boolean
 
 end

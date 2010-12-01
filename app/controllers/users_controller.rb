@@ -1,12 +1,12 @@
 #Manages users. For now, users have only an email address.
 class UsersController < ApplicationController
   def new
-    @user ||= User.new(:email => 'foo@bar.com')
+    @user ||= User.new
   end
   
   def create
     user_params = params[:user] || {}
-    @user = User.new(:email => user_params[:email])
+    @user = User.new(user_params)
 
     if @user.save
       NewsletterSignupMailer.welcome_email(@user).deliver
